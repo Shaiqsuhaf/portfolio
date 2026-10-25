@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaiq Altaf Suhaf | Data Engineer & Analytics Portfolio</title>
+  
+  <!-- Inter & JetBrains Mono Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            darkBg: '#090d16',
+            darkCard: '#111827',
+            darkSurface: '#162032',
+            darkBorder: '#1f293d',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f293d;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+
+    /* Ambient background gradient glow */
+    .radial-gradient-bg {
+      background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.05) 35%, transparent 70%);
+    }
+
+    /* Code & glassmorphism accents */
+    .glass-nav {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-darkBg text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- TOP AMBIENT GLOW -->
+  <div class="fixed inset-0 pointer-events-none radial-gradient-bg z-0"></div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-darkBg/80 border-b border-slate-200/70 dark:border-darkBorder glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo / Name -->
+      <a href="#hero" class="group flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-[2px] shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-200">
+          <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-mono font-bold text-white text-base">
+            SA
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-base tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-brand-400 transition-colors">
+            Shaiq Altaf Suhaf
+          </span>
+          <span class="text-[11px] font-mono text-emerald-600 dark:text-brand-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Data Engineer &bull; Analyst
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-emerald-600 dark:hover:text-brand-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-emerald-600 dark:hover:text-brand-400 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-emerald-600 dark:hover:text-brand-400 transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-emerald-600 dark:hover:text-brand-400 transition-colors">Experience</a>
+        <a href="#education" class="hover:text-emerald-600 dark:hover:text-brand-400 transition-colors">Education</a>
+        <a href="#contact" class="hover:text-emerald-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Nav Utility Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-darkBorder bg-white/70 dark:bg-darkCard hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-all">
+          <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
+        </button>
+
+        <!-- CTA Resume View / Print -->
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span>Get in Touch</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" aria-label="Open menu" class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-darkBorder bg-white/70 dark:bg-darkCard text-slate-600 dark:text-slate-300">
+          <i class="fa-solid fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileDrawer" class="hidden md:hidden border-b border-slate-200 dark:border-darkBorder bg-white/95 dark:bg-darkBg/95 backdrop-blur-xl px-6 py-6 space-y-4">
+      <a href="#about" class="mobile-link block text-base font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-500">About</a>
+      <a href="#skills" class="mobile-link block text-base font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-500">Technical Skills</a>
+      <a href="#projects" class="mobile-link block text-base font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-500">Featured Projects</a>
+      <a href="#experience" class="mobile-link block text-base font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-500">Experience</a>
+      <a href="#education" class="mobile-link block text-base font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-500">Education</a>
+      <a href="#contact" class="mobile-link block text-base font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-500">Contact &amp; Relocation</a>
+      <div class="pt-3 border-t border-slate-200 dark:border-darkBorder flex gap-3">
+        <a href="mailto:shaiq@outlook.in" class="flex-1 text-center py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 text-white shadow">Email Me</a>
+        <a href="tel:+917006786509" class="flex-1 text-center py-2.5 rounded-xl text-xs font-semibold border border-slate-300 dark:border-darkBorder text-slate-800 dark:text-slate-100">Call Direct</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-24 sm:pt-28">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Portrait Photo Card with Glow & Badges -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-sm sm:max-w-md group">
+            
+            <!-- Neon Ambient Aura Behind Portrait -->
+            <div class="absolute -inset-1.5 bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition duration-700"></div>
+
+            <!-- Outer Card Frame -->
+            <div class="relative rounded-3xl p-2 bg-white dark:bg-darkCard border border-slate-200/80 dark:border-darkBorder shadow-2xl overflow-hidden">
+              
+              <!-- Portrait Image Container -->
+              <div class="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-slate-900">
+                <img id="profile-img" src="profile.jpg" alt="Shaiq Altaf Suhaf" class="w-full h-full object-cover object-top" />
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x800/111827/ffffff?text=Shaiq+Altaf+Suhaf';"
+                />
+
+                <!-- Dynamic Subtle Dark Gradient Overlay at Bottom -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
+
+                <!-- Top Floating Pill: Full Availability Worldwide -->
+                <div class="absolute top-3.5 left-3.5 bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 px-3.5 py-1.5 rounded-full flex items-center gap-2 text-xs font-mono text-emerald-400 font-semibold shadow-xl">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>Open to Work &bull; Ready to Relocate</span>
+                </div>
+
+                <!-- Bottom Photo Caption -->
+                <div class="absolute bottom-3 left-4 right-4 text-white pointer-events-none">
+                  <div class="text-xs font-mono text-emerald-400 font-semibold">SHAIQ ALTAF SUHAF</div>
+                  <div class="text-sm font-medium text-slate-200 flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-xs text-rose-400"></i> Srinagar, J&amp;K &bull; Global Mobility
+                  </div>
+                </div>
+
+                <!-- Photo Upload / Swap Tool Button -->
+                <label for="photoUploader" class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/70 hover:bg-emerald-600 text-white border border-white/20 flex items-center justify-center cursor-pointer shadow-lg transition-colors duration-200 text-xs" title="Change profile photo preview">
+                  <i class="fa-solid fa-camera"></i>
+                  <input type="file" id="photoUploader" accept="image/*" class="hidden" />
+                </label>
+              </div>
+
+              <!-- Floating Micro-Card: IIITB CGPA -->
+              <div class="absolute -bottom-2 -right-2 bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-darkBorder shadow-xl rounded-2xl p-3 flex items-center gap-3 backdrop-blur-md">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold text-lg">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono uppercase text-slate-400">IIIT Bangalore</div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">3.8 / 4.0 CGPA</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Professional Introduction & Action Points -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <!-- Universal Availability Badge -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Universal Flexibility: On-site, Hybrid &amp; Remote Worldwide</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Engineering Resilient <br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500">
+              Streaming Pipelines
+            </span> &amp; Lakehouses
+          </h1>
+
+          <!-- Summary Paragraph -->
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
+            Data Science postgraduate from <strong class="text-slate-900 dark:text-white font-semibold">IIIT Bangalore (3.8/4.0 CGPA)</strong> paired with two years of hands-on operations optimization experience. Proficient in architecting high-throughput <strong class="text-emerald-600 dark:text-brand-400">PySpark</strong> streaming engines, multi-currency ETL warehouses, and geospatial demand models.
+          </p>
+
+          <!-- Core Direct Metrics Row -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm">
+              <div class="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-500">8.5x</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">PySpark Throughput Boost (4,505 rows/s)</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm">
+              <div class="text-2xl sm:text-3xl font-extrabold font-mono text-teal-500">1.2M+</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NYC Taxi Streaming Pipeline Trips</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm">
+              <div class="text-2xl sm:text-3xl font-extrabold font-mono text-cyan-500">3.8<span class="text-xs text-slate-400 font-sans">/4.0</span></div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">IIITB CGPA &bull; Capstone Grade A</div>
+            </div>
+          </div>
+
+          <!-- CTAs & Direct Contact Quick-Links -->
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="px-6 py-3.5 rounded-2xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span>Explore Technical Projects</span>
+            </a>
+
+            <a href="#contact" class="px-6 py-3.5 rounded-2xl text-sm font-semibold bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-emerald-500"></i>
+              <span>Contact &amp; Relocation Info</span>
+            </a>
+
+            <button onclick="window.print()" class="px-4 py-3.5 rounded-2xl text-sm font-medium border border-dashed border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors" title="Print or Save Portfolio as PDF">
+              <i class="fa-solid fa-print"></i>
+            </button>
+          </div>
+
+          <!-- Quick Connect Pills -->
+          <div class="pt-2 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs font-mono text-slate-500 dark:text-slate-400">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-envelope text-emerald-500"></i> shaiq@outlook.in</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-teal-500"></i> +91 70067 86509</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-globe text-cyan-500"></i> Immediate Relocation Ready</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-slate-100/50 dark:bg-darkSurface/40 border-y border-slate-200 dark:border-darkBorder">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-12">
+          <h2 class="text-xs font-mono font-bold tracking-widest text-emerald-600 dark:text-brand-400 uppercase">Profile Overview</h2>
+          <p class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Data Engineering Discipline Meets Practical Business Acumen</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Scalable Lakehouses &amp; Streaming</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Specialized in Medallion (Bronze/Silver/Gold) architectures, Spark Structured Streaming, schema enforcement, watermarked deduplication, and offset recovery mechanisms.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-500 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Proven Operations Impact</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Over two years serving as Inventory Manager, executing variance analysis that cut monthly operating costs by 15% and seasonal forecasting that dropped stockouts by 20%.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ready for Any Geography</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Based in Srinagar, J&amp;K, with total flexibility and eagerness to relocate anywhere across major Indian tech hubs or globally for on-site, hybrid, or remote engagements.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-emerald-600 dark:text-brand-400 uppercase">Core Competencies</h2>
+        <p class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Technical Stack &amp; Tooling</p>
+        <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm">
+          Hands-on proficiency across distributed compute frameworks, big data storage formats, analytical SQL, and business intelligence dashboards.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Category 1: Languages & Querying -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm space-y-4">
+          <div class="flex items-center gap-3 border-b border-slate-100 dark:border-darkBorder pb-3">
+            <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base">Languages &amp; Querying</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Python</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">SQL</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-emerald-500/10 text-emerald-600 dark:text-brand-400 font-medium">PySpark</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-emerald-500/10 text-emerald-600 dark:text-brand-400 font-medium">SparkSQL</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Pandas</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">NumPy</span>
+          </div>
+        </div>
+
+        <!-- Category 2: Data Engineering -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm space-y-4">
+          <div class="flex items-center gap-3 border-b border-slate-100 dark:border-darkBorder pb-3">
+            <div class="w-9 h-9 rounded-lg bg-teal-500/10 text-teal-500 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base">Data Engineering</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-teal-500/10 text-teal-600 dark:text-teal-400 font-medium">ETL / ELT Pipelines</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-teal-500/10 text-teal-600 dark:text-teal-400 font-medium">Apache Kafka</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Spark Streaming</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">PostgreSQL</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Data Warehousing</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">AWS S3</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Parquet &amp; Snappy</span>
+          </div>
+        </div>
+
+        <!-- Category 3: Analytics & Geospatial -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm space-y-4">
+          <div class="flex items-center gap-3 border-b border-slate-100 dark:border-darkBorder pb-3">
+            <div class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base">Analysis &amp; ML</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-medium">GeoPandas</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">EDA</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Time-Series Forecast</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Machine Learning</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Deep Learning &amp; NLP</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Statistical IQR</span>
+          </div>
+        </div>
+
+        <!-- Category 4: Visualization & Reporting -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm space-y-4">
+          <div class="flex items-center gap-3 border-b border-slate-100 dark:border-darkBorder pb-3">
+            <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base">BI &amp; Reporting</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium">Power BI</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium">Advanced Excel</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Matplotlib</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Seaborn</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Executive Dashboards</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Variance Tracking</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 bg-slate-100/50 dark:bg-darkSurface/30 border-y border-slate-200 dark:border-darkBorder">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <h2 class="text-xs font-mono font-bold tracking-widest text-emerald-600 dark:text-brand-400 uppercase">Featured Engineering</h2>
+            <p class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Production &amp; Capstone Implementations</p>
+          </div>
+
+          <!-- Project Filter Pills -->
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <button onclick="filterProjects('all')" class="project-filter-btn px-4 py-2 rounded-xl border border-emerald-500 bg-emerald-500 text-white font-semibold transition-all">All Projects</button>
+            <button onclick="filterProjects('streaming')" class="project-filter-btn px-4 py-2 rounded-xl border border-slate-300 dark:border-darkBorder bg-white dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-all">Streaming &amp; Lakehouse</button>
+            <button onclick="filterProjects('etl')" class="project-filter-btn px-4 py-2 rounded-xl border border-slate-300 dark:border-darkBorder bg-white dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-all">Batch ETL &amp; S3</button>
+            <button onclick="filterProjects('analytics')" class="project-filter-btn px-4 py-2 rounded-xl border border-slate-300 dark:border-darkBorder bg-white dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-all">Geospatial Analytics</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- PROJECT 1: NYC Taxi Streaming Pipeline (Capstone) -->
+          <div class="project-card lg:col-span-2 rounded-3xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder p-6 sm:p-8 flex flex-col justify-between shadow-sm relative overflow-hidden group" data-category="streaming">
+            <div class="absolute top-0 right-0 w-44 h-44 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-brand-400 border border-emerald-500/20">
+                  <i class="fa-solid fa-trophy"></i> Capstone &bull; Grade A
+                </span>
+                <span class="text-xs font-mono text-slate-400">Kafka &bull; PySpark &bull; PostgreSQL</span>
+              </div>
+
+              <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                Real-Time NYC Taxi Streaming Pipeline &amp; Lakehouse
+              </h3>
+
+              <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Engineered an end-to-end streaming architecture transporting <strong class="text-slate-900 dark:text-white">1.2M NYC taxi trips</strong> from PostgreSQL through Apache Kafka into a Medallion (Bronze &rarr; Silver &rarr; Gold) data lake using incremental extraction on high-water mark keys.
+              </p>
+
+              <!-- Technical highlights breakdown -->
+              <div class="my-6 space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+                <div class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Zero-Loss Reconciliation:</strong> Enforced strict schema validation with rule-based quarantine of anomalies. Silver (1.18M) + Quarantine + Duplicates exactly balanced Bronze source.</span>
+                </div>
+                <div class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Fault Tolerance &amp; Exactly-Once:</strong> Checkpointed PySpark state, committed Kafka consumer offsets, and implemented idempotent PostgreSQL upserts to ensure crash-proof replay safety.</span>
+                </div>
+                <div class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Published Gold Layer:</strong> Generated three downstream analytical aggregate tables for operational reporting and real-time dashboard consumption.</span>
+                </div>
+              </div>
+
+              <!-- Benchmark stats callout box -->
+              <div class="p-4 rounded-2xl bg-emerald-500/5 dark:bg-emerald-950/20 border border-emerald-500/20 grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                <div>
+                  <div class="text-[11px] font-mono text-slate-400 uppercase">Throughput Gain</div>
+                  <div class="text-xl font-bold font-mono text-emerald-500">8.5x (4,505 rows/s)</div>
+                  <div class="text-[10px] text-slate-500">vs 530 rows/s baseline</div>
+                </div>
+                <div>
+                  <div class="text-[11px] font-mono text-slate-400 uppercase">Runtime Cut</div>
+                  <div class="text-xl font-bold font-mono text-teal-500">240s &rarr; 63s</div>
+                  <div class="text-[10px] text-slate-500">73.7% execution reduction</div>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                  <div class="text-[11px] font-mono text-slate-400 uppercase">Data Quality</div>
+                  <div class="text-xl font-bold font-mono text-cyan-500">1.18M Clean</div>
+                  <div class="text-[10px] text-slate-500">100% audit passed</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-darkBorder">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PySpark Structured Streaming</span>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Apache Kafka</span>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL</span>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Medallion Architecture</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: Global Banking ETL Pipeline -->
+          <div class="project-card rounded-3xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder p-6 sm:p-8 flex flex-col justify-between shadow-sm relative group" data-category="etl">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Cloud ETL
+                </span>
+                <span class="text-xs font-mono text-slate-400">AWS S3</span>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                Global Banking ETL Pipeline &amp; Market Analysis
+              </h3>
+
+              <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Architected a distributed PySpark ETL pipeline standardizing multi-currency financial balance sheets into a uniform USD valuation layer.
+              </p>
+
+              <div class="my-5 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                <div class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                  <span>Formulated custom SparkSQL logic to compute "Market Dominance" rankings across tier-1 banks.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-teal-500 mt-0.5"></i>
+                  <span>Automated statistical outlier filtration via Interquartile Range (IQR) before writing to AWS S3.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-darkBorder">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PySpark</span>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SparkSQL</span>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">AWS S3</span>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">IQR Filter</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: NYC Taxi Geospatial Operational Efficiency -->
+          <div class="project-card rounded-3xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder p-6 sm:p-8 flex flex-col justify-between shadow-sm relative group lg:col-span-3" data-category="analytics">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              
+              <div class="md:col-span-8 space-y-3">
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
+                    <i class="fa-solid fa-map-pin"></i> Geospatial Optimization
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">Python &bull; GeoPandas &bull; Parquet</span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                  NYC Taxi Operational Efficiency &amp; Congestion Bottleneck Analysis
+                </h3>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Merged large NYC taxi trip records with NYC borough shapefiles via GeoPandas to diagnose high-density pickup zones and dispatch latency across Manhattan corridors and JFK International Airport.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-slate-600 dark:text-slate-300">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-gauge-simple-high text-cyan-500 mt-0.5"></i>
+                    <span>Pinpointed critical transit velocity drop to <strong>9.8 mph</strong> during the 3:00 PM – 4:00 PM rush hour.</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-microchip text-cyan-500 mt-0.5"></i>
+                    <span>Overcame local hardware constraints using randomized sampling techniques on heavy multi-gigabyte Parquet archives.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="md:col-span-4 p-5 rounded-2xl bg-slate-50 dark:bg-darkSurface border border-slate-200 dark:border-darkBorder text-center">
+                <div class="text-xs font-mono text-slate-400 uppercase">Identified Rush-Hour Bottleneck</div>
+                <div class="text-3xl font-extrabold font-mono text-amber-500 mt-1">9.8 MPH</div>
+                <div class="text-xs text-slate-500 mt-1">Severe 3 PM – 4 PM congestion window</div>
+                <div class="mt-4 pt-3 border-t border-slate-200 dark:border-darkBorder flex justify-center gap-2">
+                  <span class="px-2.5 py-1 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">GeoPandas</span>
+                  <span class="px-2.5 py-1 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">Parquet</span>
+                  <span class="px-2.5 py-1 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">Time-Series</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION SECTION -->
+    <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- EXPERIENCE COLUMN -->
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div>
+              <h2 class="text-xs font-mono font-bold tracking-widest text-emerald-600 dark:text-brand-400 uppercase">Work History</h2>
+              <p class="text-2xl font-extrabold text-slate-900 dark:text-white">Professional Experience</p>
+            </div>
+          </div>
+
+          <div class="relative pl-6 sm:pl-8 border-l-2 border-emerald-500/30 space-y-8">
+            
+            <div class="relative">
+              <!-- Timeline node dot -->
+              <span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-50 dark:border-darkBg"></span>
+
+              <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-white">Inventory Manager</h3>
+                  <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-brand-400 font-semibold">
+                    Sep 2023 &ndash; May 2025
+                  </span>
+                </div>
+
+                <div class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                  Hotel Sultan Residency &amp; Bizza Cafe Heritage
+                </div>
+
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-arrow-trend-up text-emerald-500 mt-1"></i>
+                    <span><strong>Demand Forecasting:</strong> Modeled historical sales patterns and seasonal turnover trends to predict inventory reorders, successfully slashing stockouts by <strong>20%</strong>.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-percent text-emerald-500 mt-1"></i>
+                    <span><strong>Cost Optimization:</strong> Conducted routine variance analyses between procurement pricing and theoretical consumption, generating a continuous <strong>15% reduction</strong> in monthly operating costs.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-table text-emerald-500 mt-1"></i>
+                    <span><strong>Automated Reporting:</strong> Designed daily executive Excel dashboards tracking food wastage ratios, turnaround velocity, and replenishment alerts for senior leadership.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- EDUCATION COLUMN -->
+        <div id="education">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-500 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+              <h2 class="text-xs font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase">Academic Credentials</h2>
+              <p class="text-2xl font-extrabold text-slate-900 dark:text-white">Education &amp; Honors</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            
+            <!-- IIIT Bangalore -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm relative overflow-hidden">
+              <div class="flex flex-wrap items-center justify-between gap-1 mb-2">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Executive PG Programme in Data Science</h3>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-brand-400 font-bold">CGPA 3.8 / 4.0</span>
+              </div>
+              <div class="text-sm font-semibold text-emerald-600 dark:text-brand-400">
+                International Institute of Information Technology Bangalore (IIIT Bangalore)
+              </div>
+              <div class="text-xs font-mono text-slate-400 mt-1">Class of 2026 &bull; 10 Courses &bull; 36 Credits</div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 dark:border-darkBorder">
+                <div class="text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  <i class="fa-solid fa-award text-amber-500 mr-1"></i> Grade A in Data Warehousing, Modern Data Engineering Technologies, and Capstone Project.
+                </div>
+                <div class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <strong>Rigorous Coursework:</strong> Distributed Data Processing, Large-Scale Data Pipelining &amp; Monitoring, Cloud Computing &amp; Big Data, Machine Learning, Deep Learning &amp; NLP, Advanced Mathematics for ML, Data Warehousing, Exploratory Data Analysis.
+                </div>
+              </div>
+            </div>
+
+            <!-- University of Kashmir -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm">
+              <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
+                <h3 class="text-base font-bold text-slate-900 dark:text-white">Bachelor of Business Administration (BBA)</h3>
+                <span class="text-xs font-mono text-slate-400">2019 &ndash; 2024</span>
+              </div>
+              <div class="text-sm text-slate-600 dark:text-slate-400">
+                University of Kashmir
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                Strong grounding in organizational finance, operations strategy, business management, and quantitative decision analysis.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT & RELOCATION READINESS SECTION -->
+    <section id="contact" class="py-20 bg-slate-100/50 dark:bg-darkSurface/30 border-t border-slate-200 dark:border-darkBorder">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-brand-400 mb-3">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Worldwide Availability</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Let's Build Impactful Data Systems</h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto">
+            Actively seeking Data Analyst or Data Engineer roles. Fully open to <strong class="text-slate-900 dark:text-white">on-site, hybrid, and remote</strong> options globally with immediate relocation availability.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Contact Detail Cards (5 cols) -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <!-- Email Item with Copy Button -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl shrink-0">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] font-mono uppercase text-slate-400">Direct Email</div>
+                  <a href="mailto:shaiq@outlook.in" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors">
+                    shaiq@outlook.in
+                  </a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('shaiq@outlook.in', 'Email copied!')" class="p-2.5 rounded-xl border border-slate-200 dark:border-darkBorder hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-emerald-500 transition-all" title="Copy Email">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+
+            <!-- Phone Item with Copy Button -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-500 flex items-center justify-center text-xl shrink-0">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] font-mono uppercase text-slate-400">Direct Phone / WhatsApp</div>
+                  <a href="tel:+917006786509" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors">
+                    +91 70067 86509
+                  </a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('+917006786509', 'Phone number copied!')" class="p-2.5 rounded-xl border border-slate-200 dark:border-darkBorder hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-emerald-500 transition-all" title="Copy Phone Number">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+
+            <!-- Location & Mobility Status -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl shrink-0 mt-0.5">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-mono uppercase text-slate-400">Current Base &amp; Relocation</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white">Srinagar, Jammu &amp; Kashmir, India</div>
+                <div class="text-xs text-emerald-600 dark:text-brand-400 font-semibold mt-1">
+                  &check; Immediate relocation to any city in India or international locations
+                </div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  &check; Fully equipped for high-performance remote collaboration
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="p-5 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm flex items-center justify-between">
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Professional Profiles:</span>
+              <div class="flex items-center gap-3">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-emerald-500 hover:text-white transition-all text-xs font-semibold flex items-center gap-2">
+                  <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-emerald-500 hover:text-white transition-all text-xs font-semibold flex items-center gap-2">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Message Box (7 cols) -->
+          <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Send a Message</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Inquiring about full-time openings, technical interviews, or projects? Reach out directly.</p>
+
+            <form id="contactForm" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">Your Name *</label>
+                  <input type="text" id="senderName" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-darkSurface border border-slate-200 dark:border-darkBorder text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">Your Email *</label>
+                  <input type="email" id="senderEmail" required placeholder="jane@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-darkSurface border border-slate-200 dark:border-darkBorder text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">Role Type / Opportunity</label>
+                <select id="roleType" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-darkSurface border border-slate-200 dark:border-darkBorder text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors">
+                  <option value="Data Engineer (On-site / Hybrid / Remote)">Data Engineer Role</option>
+                  <option value="Data Analyst (On-site / Hybrid / Remote)">Data Analyst Role</option>
+                  <option value="Analytics Engineer / BI">Analytics Engineer / BI Role</option>
+                  <option value="General Technical Inquiry">Other Inquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">Message *</label>
+                <textarea id="messageBody" rows="4" required placeholder="Hi Shaiq, we would like to interview you for a Data Engineer position..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-darkSurface border border-slate-200 dark:border-darkBorder text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Send Message via Email Client</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 dark:border-darkBorder bg-white dark:bg-darkBg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-900 dark:text-white">Shaiq Altaf Suhaf</span>
+        <span>&bull;</span>
+        <span>Postgraduate in Data Science, IIITB</span>
+      </div>
+      <div>
+        Srinagar, J&amp;K, India &bull; Open for On-site, Hybrid &amp; Remote
+      </div>
+      <div>
+        <a href="#hero" class="hover:text-emerald-500 transition-colors flex items-center gap-1">
+          Back to Top <i class="fa-solid fa-arrow-up text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none px-4 py-3 rounded-2xl bg-slate-950 text-white text-xs font-mono border border-emerald-500/40 shadow-2xl flex items-center gap-2.5">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Dark / Light Mode Handler
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        html.classList.add('dark');
+        themeIcon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+      } else {
+        html.classList.remove('dark');
+        themeIcon.className = 'fa-solid fa-moon text-slate-600 text-sm';
+      }
+    }
+
+    // Default to dark theme for modern developer look
+    applyTheme(true);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark');
+      applyTheme(isDark);
+      showToast(isDark ? 'Dark theme enabled' : 'Light theme enabled');
+    });
+
+    // 2. Mobile Menu Drawer Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.add('hidden');
+      });
+    });
+
+    // 3. Local Photo Uploader for Instant Interactive Testing
+    const photoUploader = document.getElementById('photoUploader');
+    const profileImg = document.getElementById('profileImg');
+
+    photoUploader.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          profileImg.src = evt.target.result;
+          showToast('Profile photo updated successfully!');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // 4. Toast Notification Utility
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      toastMsg.innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2600);
+    }
+
+    // 5. Copy-To-Clipboard Helper (Compatible with iFrame environments)
+    function copyToClipboard(text, successMsg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (err) {
+        showToast('Manual copy: ' + text);
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // 6. Dynamic Project Filter Buttons
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.project-filter-btn');
+
+      // Update button styles
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-500');
+        btn.classList.add('bg-white', 'dark:bg-darkCard', 'text-slate-600', 'dark:text-slate-400');
+      });
+      event.target.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+      event.target.classList.remove('bg-white', 'dark:bg-darkCard', 'text-slate-600', 'dark:text-slate-400');
+
+      // Filter cards
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 7. Contact Form Handler (Launches pre-filled email client)
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      const email = document.getElementById('senderEmail').value;
+      const role = document.getElementById('roleType').value;
+      const body = document.getElementById('messageBody').value;
+
+      const subject = encodeURIComponent(`[Portfolio Opportunity] ${role} - from ${name}`);
+      const mailtoContent = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nRole Type: ${role}\n\nMessage:\n${body}`);
+
+      showToast('Opening default mail client...');
+      setTimeout(() => {
+        window.location.href = `mailto:shaiq@outlook.in?subject=${subject}&body=${mailtoContent}`;
+      }, 500);
+    });
+  </script>
+</body>
+</html>
